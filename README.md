@@ -1,70 +1,26 @@
-# Getting Started with Create React App
+# Recipe Book Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to the **Recipe Book Application**, a React.js-based project developed as part of my internship assignment for Wobot Intelligence in June 2025. This application allows users to browse, search, and explore detailed recipe information using the Spoonacular Recipe API.
 
-## Available Scripts
+## Overview
 
-In the project directory, you can run:
+This project fulfills the core requirements of the Wobot Intelligence internship assignment while incorporating bonus features to enhance user experience. Built with modern web technologies, it showcases my skills in React development, API integration, and responsive design.
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Homepage Recipe List**: Displays a curated list of recipes with names and brief descriptions, fetched from the Spoonacular API.
+- **Recipe Details Page**: Provides detailed information (ingredients, instructions, prep time, and image) for each recipe on a separate page.
+- **Dynamic Routing**: Implements React Router for seamless navigation between the homepage, recipe details, and about pages.
+- **Search Functionality**: Allows users to search recipes by name or ingredients with debounced input for smooth performance (bonus feature).
+- **Category Filters**: Enables filtering by dietary preferences (e.g., vegetarian, vegan, gluten-free) (bonus feature).
+- **Navigation Bar**: Includes a scroll-aware navbar with a chef hat logo, links to Home and About, and a "Back to Recipes" option on detail pages.
+- **Error Handling**: Displays user-friendly messages for API or network errors.
+- **Responsive Design**: Adapts to mobile and desktop screens with tailored layouts.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Technologies Used
 
-### `npm test`
+- **Frontend**: React.js, React Router
+- **API**: Spoonacular Recipe API
+- **Styling**: CSS with custom Hover effects and golden accents
+- **Deployment**: Vercel
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
