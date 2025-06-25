@@ -1,35 +1,43 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 
 function RecipeDetails() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const [recipe, setRecipe] = useState(null);
-  const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [recipe, setRecipe] = useState(null);
 
   const API_KEY = process.env.REACT_APP_API_KEY;
 
+
+  const fetchRecipeDetails = useCallback(async () => {
+    try {
+      setLoading(true);
+      if (!API_KEY) throw new Error('API key is missing. Please set REACT_APP_API_KEY in .env.');
+      const response = await fetch(
+        `https://api.spoonacular.com/recipes/${id}/information?apiKey=${API_KEY}&includeNutrition=false`
+      );
+      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+      const data = await response.json();
+      setRecipe(data);
+      setError(null);
+    } catch (err) {
+      setError(`Could not load this recipe. It might be temporarily unavailable. Error: ${err.message}`);
+      console.error('Fetch error:', err);
+    } finally {
+      setLoading(false);
+    }
+  }, [API_KEY, id]); 
+
   useEffect(() => {
-    const fetchRecipeDetails = async () => {
-      try {
-        setLoading(true);
-        const response = await fetch(
-          `https://api.spoonacular.com/recipes/${id}/information?apiKey=${API_KEY}&includeNutrition=false`
-        );
-        if (!response.ok) throw new Error('Failed to fetch recipe details');
-        const data = await response.json();
-        setRecipe(data);
-        setError(null);
-      } catch (err) {
-        setError('Could not load this recipe. It might be temporarily unavailable.');
-        console.error('Fetch error:', err);
-      } finally {
-        setLoading(false);
-      }
-    };
+    if (!id) {
+      setError('No recipe ID provided.');
+      setLoading(false);
+      return;
+    }
     fetchRecipeDetails();
-  }, [id]);
+  }, [id, fetchRecipeDetails]);
 
   const formatTime = (minutes) => {
     if (!minutes) return 'No time specified';
@@ -53,26 +61,29 @@ function RecipeDetails() {
   if (error) {
     return (
       <div className="container">
-        <a href="#" onClick={() => navigate(-1)} className="back-button">
-          ← Back to Recipes
-        </a>
+        
         <div className="error-container">
-          <div className="error-icon">😔</div>
           <div className="error-text">{error}</div>
           <div className="error-subtitle">Please try another recipe or go back to browse more options.</div>
+          <button className="back-button" onClick={fetchRecipeDetails}>
+            Retry
+          </button>
         </div>
       </div>
     );
   }
 
-  if (!recipe) return null;
+  if (!recipe) {
+    return (
+      <div className="container">
+        <p>No recipe data available.</p>
+      </div>
+    );
+  }
 
   return (
     <div className="container">
-      <a href="#" onClick={() => navigate(-1)} className="back-button">
-        ← Back to Recipes
-      </a>
-      
+            
       <div className="recipe-details">
         <div className="recipe-details-header">
           <h1 className="recipe-details-title">{recipe.title}</h1>
@@ -81,8 +92,8 @@ function RecipeDetails() {
             {recipe.servings && <span>👥 Serves {recipe.servings}</span>}
             {recipe.vegetarian && <span>🌱 Vegetarian</span>}
             {recipe.vegan && <span>🌿 Vegan</span>}
-            {recipe.glutenFree && <span>🌾 Gluten-Free</span>}
-            {recipe.dairyFree && <span>🥛 Dairy-Free</span>}
+            {recipe.glutenFree && <span>🌾 Gluten Free</span>}
+            {recipe.dairyFree && <span>🥛 Dairy Free</span>}
             {!recipe.vegetarian && !recipe.vegan && !recipe.glutenFree && !recipe.dairyFree && <span>🍽️ Classic Recipe</span>}
           </div>
         </div>
@@ -113,7 +124,7 @@ function RecipeDetails() {
                 </li>
               ))
             ) : (
-              <li className="ingredient-item">No ingredients available for this recipe</li>
+              <li className="ingredient-item">No ingredients available</li>
             )}
           </ul>
         </div>
@@ -133,8 +144,7 @@ function RecipeDetails() {
               </ol>
             ) : (
               <p style={{ fontStyle: 'italic', textAlign: 'center', color: '#6D6D70' }}>
-                Instructions are not available for this recipe. 
-                You can use the ingredients list above to create your own version!
+                Instructions are not available for this recipe.
               </p>
             )}
           </div>
