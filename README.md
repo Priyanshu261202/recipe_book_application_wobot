@@ -12,7 +12,7 @@ This project fulfills the core requirements of the Wobot Intelligence internship
 - **Homepage Recipe List**: Displays a curated list of recipes with names and brief descriptions, fetched from the Spoonacular API.
 - **Recipe Details Page**: Provides detailed information (ingredients, instructions, prep time, and image) for each recipe on a separate page.
 - **Dynamic Routing**: Implements React Router for seamless navigation between the homepage, recipe details, and about pages.
-- **Search Functionality**: Allows users to search recipes by name or ingredients with debounced input for smooth performance (bonus feature).
+- **Search Functionality**: Allows users to search recipes by name or ingredients with debounced input for smooth performance.
 - **Category Filters**: Enables filtering by dietary preferences.
 - **Navigation Bar**: Includes a scroll-aware navbar with a chef hat logo, links to Home and About, and a "Back to Recipes" option on detail pages.
 - **Error Handling**: Displays user-friendly messages for API or network errors.
