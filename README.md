@@ -6,9 +6,6 @@ Welcome to the **Recipe Book Application**, a React.js-based project developed a
 
 This project fulfills the core requirements of the Wobot Intelligence internship assignment while incorporating bonus features to enhance user experience. Built with modern web technologies, it showcases my skills in React development, API integration, and responsive design.
 
-## File Structure 
-![image](https://github.com/user-attachments/assets/1e940246-d3de-43f0-aa6d-1aeada6a556f)
-
 
 ## Features
 
@@ -27,4 +24,8 @@ This project fulfills the core requirements of the Wobot Intelligence internship
 - **API**: Spoonacular Recipe API
 - **Styling**: CSS with custom Hover effects and golden accents
 - **Deployment**: Vercel
+
+## File Structure 
+![image](https://github.com/user-attachments/assets/1e940246-d3de-43f0-aa6d-1aeada6a556f)
+ 
 
